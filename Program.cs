@@ -8,7 +8,14 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+c.CustomOperationIds(e => $"{e.ActionDescriptor.RouteValues["action"]}");
+c.AddServer(new Microsoft.OpenApi.Models.OpenApiServer()
+{
+    Url = "https://erpdemoapi-gggfgqaeg9h8e7e4.westeurope-01.azurewebsites.net/"
+});
+});
 builder.Services.AddDbContext<ERPDemoAPIContext>(options => options.UseSqlite($@"Data Source=Database/ERPDemoAPI.sqlite3"));
 
 builder.Services.ConfigureSwaggerGen(setup =>
