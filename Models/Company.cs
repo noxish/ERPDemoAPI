@@ -13,21 +13,19 @@ public partial class Company
     [Key]
     public int Id { get; set; }
 
-    public string Firma { get; set; }
+    public string CompanyName { get; set; }
 
-    public string Straße { get; set; }
+    public string Street { get; set; }
 
-    public int? Postleitzahl { get; set; }
+    public int? PostalCode { get; set; }
 
-    public string Ort { get; set; }
+    public string City { get; set; }
 
-    public string Land { get; set; }
+    public string Country { get; set; }
 
-    [Column("LandISOCode")]
-    public string LandIsocode { get; set; }
+    public string CountryCode { get; set; }
 
-    public string Telefonnummer { get; set; }
+    public string Telephone { get; set; }
 
-    [Column("EMail")]
     public string Email { get; set; }
 }

@@ -35,28 +35,28 @@ public class CompanyController : ControllerBase
     [HttpGet("ByCompanyName/{name}")]
     public List<Company> SearchByName(string name)
     {
-        return _context.Companies.Where(n => n.Firma.Contains(name)).OrderBy(n => n.Id).AsNoTracking().ToList();
+        return _context.Companies.Where(n => n.CompanyName.Contains(name)).OrderBy(n => n.Id).AsNoTracking().ToList();
     }
 
     // GET api/<ValuesController>/city/5
     [HttpGet("ByCity/{city}")]
     public List<Company> GetCompaniesByCity(string city)
     {
-        return _context.Companies.Where(n => n.Ort == city).OrderBy(n => n.Id).AsNoTracking().ToList();
+        return _context.Companies.Where(n => n.City == city).OrderBy(n => n.Id).AsNoTracking().ToList();
     }
 
     // GET api/<ValuesController>/city/5
     [HttpGet("ByCountry/{country}")]
     public List<Company> GetCompaniesByCountry(string country)
     {
-        return _context.Companies.Where(n => n.Land == country).OrderBy(n => n.Id).AsNoTracking().ToList();
+        return _context.Companies.Where(n => n.Country == country).OrderBy(n => n.Id).AsNoTracking().ToList();
     }
 
     // GET api/<ValuesController>/city/5
     [HttpGet("ByCountryCode/{countryCode}")]
     public List<Company> GetCompaniesByCountryCode(string countryCode)
     {
-        return _context.Companies.Where(n => n.LandIsocode == countryCode).OrderBy(n => n.Id).AsNoTracking().ToList();
+        return _context.Companies.Where(n => n.CountryCode == countryCode).OrderBy(n => n.Id).AsNoTracking().ToList();
     }
 
     //// POST api/<ValuesController>
