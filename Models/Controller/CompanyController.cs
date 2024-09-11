@@ -59,21 +59,21 @@ public class CompanyController : ControllerBase
         return _context.Companies.Where(n => n.LandIsocode == countryCode).OrderBy(n => n.Id).AsNoTracking().ToList();
     }
 
-    // POST api/<ValuesController>
-    [HttpPost]
-    public void Post([FromBody] string value)
-    {
-    }
+    //// POST api/<ValuesController>
+    //[HttpPost]
+    //public void Post([FromBody] string value)
+    //{
+    //}
 
-    // PUT api/<ValuesController>/5
-    [HttpPut("{id}")]
-    public void Put(int id, [FromBody] string value)
-    {
-    }
+    //// PUT api/<ValuesController>/5
+    //[HttpPut("{id}")]
+    //public void Put(int id, [FromBody] string value)
+    //{
+    //}
 
-    // DELETE api/<ValuesController>/5
-    [HttpDelete("{id}")]
-    public void Delete(int id)
-    {
-    }
+    //// DELETE api/<ValuesController>/5
+    //[HttpDelete("{id}")]
+    //public void Delete(int id)
+    //{
+    //}
 }
