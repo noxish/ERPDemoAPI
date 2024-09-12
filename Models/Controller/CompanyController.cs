@@ -18,6 +18,9 @@ public class CompanyController : ControllerBase
     }
 
     // GET: api/<ValuesController>
+    /// <summary>
+    /// Get all companies
+    /// </summary>
     [HttpGet]
     public List<Company> Get()
     {
@@ -25,39 +28,40 @@ public class CompanyController : ControllerBase
     }
 
     // GET api/<ValuesController>/5
-    [HttpGet("{id}")]
-    public string Get(int id)
-    {
-        return "value";
-    }
-
-    // GET api/<ValuesController>/5
+    /// <summary>
+    /// Find Company by Name
+    /// </summary>
     [HttpGet("ByCompanyName/{name}")]
-    [EndpointDescription("Find Company by Name")]
     public List<Company> SearchByName(string name)
     {
         return _context.Companies.Where(n => n.CompanyName.Contains(name)).OrderBy(n => n.Id).AsNoTracking().ToList();
     }
 
     // GET api/<ValuesController>/city/5
+    /// <summary>
+    /// Get Companies by City Name
+    /// </summary>
     [HttpGet("ByCity/{city}")]
-    [EndpointDescription("Get Companies by City Name")]
     public List<Company> GetCompaniesByCity(string city)
     {
         return _context.Companies.Where(n => n.City == city).OrderBy(n => n.Id).AsNoTracking().ToList();
     }
 
     // GET api/<ValuesController>/city/5
+    /// <summary>
+    /// Get Companies by Country Name in German
+    /// </summary>
     [HttpGet("ByCountry/{country}")]
-    [EndpointDescription("Get Companies by Country Name in German")]
     public List<Company> GetCompaniesByCountry(string country)
     {
         return _context.Companies.Where(n => n.Country == country).OrderBy(n => n.Id).AsNoTracking().ToList();
     }
 
     // GET api/<ValuesController>/city/5
+    /// <summary>
+    /// Get Companies by Country ISO 3166-1 A-2 Code
+    /// </summary>
     [HttpGet("ByCountryCode/{countryCode}")]
-    [EndpointDescription("Get Companies by Country ISO 3166-1 A-2 Code")]
     public List<Company> GetCompaniesByCountryCode(string countryCode)
     {
         return _context.Companies.Where(n => n.CountryCode == countryCode).OrderBy(n => n.Id).AsNoTracking().ToList();

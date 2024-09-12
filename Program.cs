@@ -1,5 +1,7 @@
+using System.Reflection;
 using ERPDemoAPI.Models.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,9 @@ c.AddServer(new Microsoft.OpenApi.Models.OpenApiServer()
 {
     Url = "https://erpdemoapi-gggfgqaeg9h8e7e4.westeurope-01.azurewebsites.net/"
 });
+    // using System.Reflection;
+    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
 });
 builder.Services.AddDbContext<ERPDemoAPIContext>(options => options.UseSqlite($@"Data Source=Database/ERPDemoAPI.sqlite3"));
 
@@ -26,6 +31,8 @@ builder.Services.ConfigureSwaggerGen(setup =>
         Version = "v1"
     });
 });
+
+
 
 var app = builder.Build();
 
