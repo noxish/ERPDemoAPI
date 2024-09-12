@@ -27,7 +27,7 @@ public class CompanyController : ControllerBase
         return _context.Companies.OrderBy(n => n.Id).AsNoTracking().ToList();
     }
 
-    // GET api/<ValuesController>/5
+    // GET api/<ValuesController>/ByCompanyName/Firma Industries 758
     /// <summary>
     /// Find Company by Name
     /// </summary>
@@ -36,8 +36,16 @@ public class CompanyController : ControllerBase
     {
         return _context.Companies.Where(n => n.CompanyName.Contains(name)).OrderBy(n => n.Id).AsNoTracking().ToList();
     }
-
-    // GET api/<ValuesController>/city/5
+    // GET api/<ValuesController>/ByPhone/+43 747-6356
+    /// <summary>
+    /// Get Companies by Phone Number
+    /// </summary>
+    [HttpGet("ByPhone/{country}")]
+    public List<Company> GetCompaniesByPhone(string phone)
+    {
+        return _context.Companies.Where(n => n.Telephone == phone).OrderBy(n => n.Id).AsNoTracking().ToList();
+    }
+    // GET api/<ValuesController>/city/Vienna
     /// <summary>
     /// Get Companies by City Name
     /// </summary>
@@ -47,7 +55,17 @@ public class CompanyController : ControllerBase
         return _context.Companies.Where(n => n.City == city).OrderBy(n => n.Id).AsNoTracking().ToList();
     }
 
-    // GET api/<ValuesController>/city/5
+    // GET api/<ValuesController>/ByPostalCode/1010
+    /// <summary>
+    /// Get Companies by PostalCode
+    /// </summary>
+    [HttpGet("ByPostalCode/{postalcode}")]
+    public List<Company> GetCompaniesByPostalCode(int postalcode)
+    {
+        return _context.Companies.Where(n => n.PostalCode == postalcode).OrderBy(n => n.Id).AsNoTracking().ToList();
+    }
+
+    // GET api/<ValuesController>/ByCountry/Austria
     /// <summary>
     /// Get Companies by Country Name in German
     /// </summary>
@@ -57,7 +75,7 @@ public class CompanyController : ControllerBase
         return _context.Companies.Where(n => n.Country == country).OrderBy(n => n.Id).AsNoTracking().ToList();
     }
 
-    // GET api/<ValuesController>/city/5
+    // GET api/<ValuesController>/ByCountryCode/AT
     /// <summary>
     /// Get Companies by Country ISO 3166-1 A-2 Code
     /// </summary>
