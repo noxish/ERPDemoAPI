@@ -33,6 +33,7 @@ public class CompanyController : ControllerBase
 
     // GET api/<ValuesController>/5
     [HttpGet("ByCompanyName/{name}")]
+    [EndpointDescription("Find Company by Name")]
     public List<Company> SearchByName(string name)
     {
         return _context.Companies.Where(n => n.CompanyName.Contains(name)).OrderBy(n => n.Id).AsNoTracking().ToList();
@@ -40,6 +41,7 @@ public class CompanyController : ControllerBase
 
     // GET api/<ValuesController>/city/5
     [HttpGet("ByCity/{city}")]
+    [EndpointDescription("Get Companies by City Name")]
     public List<Company> GetCompaniesByCity(string city)
     {
         return _context.Companies.Where(n => n.City == city).OrderBy(n => n.Id).AsNoTracking().ToList();
@@ -47,6 +49,7 @@ public class CompanyController : ControllerBase
 
     // GET api/<ValuesController>/city/5
     [HttpGet("ByCountry/{country}")]
+    [EndpointDescription("Get Companies by Country Name in German")]
     public List<Company> GetCompaniesByCountry(string country)
     {
         return _context.Companies.Where(n => n.Country == country).OrderBy(n => n.Id).AsNoTracking().ToList();
@@ -54,6 +57,7 @@ public class CompanyController : ControllerBase
 
     // GET api/<ValuesController>/city/5
     [HttpGet("ByCountryCode/{countryCode}")]
+    [EndpointDescription("Get Companies by Country ISO 3166-1 A-2 Code")]
     public List<Company> GetCompaniesByCountryCode(string countryCode)
     {
         return _context.Companies.Where(n => n.CountryCode == countryCode).OrderBy(n => n.Id).AsNoTracking().ToList();

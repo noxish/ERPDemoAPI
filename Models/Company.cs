@@ -29,3 +29,7 @@ public partial class Company
 
     public string Email { get; set; }
 }
+public partial class Country
+{
+
+}
